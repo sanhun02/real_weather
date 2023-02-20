@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?{% now 'U' %}">
+</head>
+<body>
+    {% if msg %}
+        <div class="notification {{ msg_class }}" id="hide"> {{ msg }}</div>
+    {% endif %}
+    <div class="container">
+        <div class="weather-container">
+            <form method="POST" id="main-form">
+                {% csrf_token %}
+                <div class="search-container">
+                    <input class='search-input' type="text" placeholder="Search for a city" name="city-input"></input>
+                    <input class="search-btn" type="submit" value=""></input>
+                    {{ form.as_p }}
+                </div>
+            </form>
+            <div class="weather">
+                <a href="{% url 'go_to_detailed_weather' city_data.city %}" form="main-form">
+                    <input form="main-form" class="city-name" id="main-name" name="current-city" type="sumbit" value='{{ city_data.city }}'></input>
+                </a>
+                <p class="city-temp" id="main-temp">{{ city_data.temp }}°F</p>
+                <div class="icon-description-container" id="main-icon-descr">
+                    <img src="https://openweathermap.org/img/wn/{{ city_data.icon }}.png" alt="weather icon" class="city-icon" id="main-icon">
+                    <p class="city-description" id="main-description">{{ city_data.descr }}</p>
+                </div>
+                <div class="feels-humidity-container">
+                    <p class="feels_like">Feels Like: {{ city_data.feels_like }}°</p>
+                    <p class="humidity">Humidity: {{ city_data.humidity }}%</p>
+                </div>
+            </div>
+        </div>
+        <div class="watchlist-container">
+            <div class="title" id="wl-title">Watchlist</div>
+            <div class="watchlist">
+                {% for city_data in cities_data %}
+                <div class="wl-box">
+                    <div class="city-name-delete-container">
+                        <a href="{% url 'go_to_detailed_weather' city_data.city %}">
+                            <div class="city-name" id="wl-name">{{ city_data.city }}</div>
+                        </a>
+                        <a href="{% url 'delete_from_watchlist' city_data.city %}">
+                            <button class="option-btn" id="delete-btn">x</button>
+                        </a>
+                    </div>
+                    <p class="city-temp" id="wl-temp">{{ city_data.temp }}°F</p>
+                    <div class="icon-description-container" id="wl-icon-descr">
+                        <img src="https://openweathermap.org/img/wn/{{ city_data.icon }}.png" alt="weather icon" class="city-icon" id="wl-icon">
+                        <p class="city-description" id="wl-description">{{ city_data.descr }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/detailed_style.css?{% now 'U' %}">
+</head>
+<body>
+    {% if msg %}
+        <div class="notification {{ msg_class }}" id="hide"> {{ msg }}</div>
+    {% endif %}
+    <div class="container">
+        <form method="POST" id="detail-form">
+            {% csrf_token %}
+            <div class="post-container">
+                <a href="{% url 'main_weather' %}">
+                    <img src="/static/css/back-icon.png" alt="back arrow" class="back-img" name="back-btn">
+                </a>
+                <input class="search-input" type="text" placeholder="Search for a city" name="input"></input>
+                <button class="search-btn" type="submit" value="">
+                    <img src="/static/css/search-icon.png" alt="" class="search-img">
+                </button>
+            </div>
+        <div class="weather-container">
+            <div class="main-weather" form="detail-form">
+                <input form="detail-form" class="city-name" type="Text" value="{{ detail_data.city }}" name="current-city"></input>
+        </form>
+                <p class="city-temp">{{ detail_data.temp }}°F</p>
+                <div class="icon-descr-container" id="main-icon-descr">
+                    <img src="https://openweathermap.org/img/wn/{{ detail_data.icon }}.png" alt="weather-icon" class="city-icon">
+                    <p class="city-descr">{{ detail_data.descr }}</p>
+                </div>
+            </div>
+            <div class="details-container">
+                <p class="city-wind">Wind: {{ detail_data.wind }} mi/h</p>
+                <p class="city-feels-like">Feels Like: {{ detail_data.feels_like }}°</p>
+                <p class="city-humidity">Humidity: {{ detail_data.humidity }}%</p>
+                <p class="precipitation">Precipitation: {{ detail_data.preci }}%</p>
+            </div>
+            <div class="forecast-container">
+                <p class="forecast-title">5-Day Forecast</p>
+                <div class="forecast-box-container">
+                    {% for city in forecast_data %}
+                    <div class="forecast-box">
+                        <p class="box-date">{{ city.date }}</p>
+                        <p class="box-temp">{{ city.temp }}°</p>
+                        <div class="icon-descr-container" id="box-icon-descr">
+                            <img src="https://openweathermap.org/img/wn/{{ city.icon }}.png" alt="weather icon" class="box-icon">
+                            <p class="box-descr">{{ city.descr }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

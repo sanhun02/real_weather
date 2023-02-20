@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+* {
+    color: #faf8f1;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-image: url('cloud-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Montserrat';
+}
+
+button {
+    cursor: pointer;
+}
+
+.notification {
+    margin: auto;
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+    padding: 13px 0;
+    border-radius: 10%/20%;
+    margin-top: 15px;
+    margin-bottom: -50px;
+    -moz-animation: cssAnimation 0s ease-in 5s forwards;
+    -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+    -o-animation: cssAnimation 0s ease-in 5s forwards;
+    animation: cssAnimation 0s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
+
+.exist {
+    background-color: #4CBB17;
+    width: 150px;
+}
+
+.not-exist {
+    background-color: #DC143C;
+    width: 150px;
+}
+
+.container {
+    padding: 50px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 35px;
+    width: 750px;
+    max-width: 100%;
+}
+
+.weather-container {
+    background-color: #00000076;
+    height: 400px;
+    width: 400px;
+    border-radius: 10%;
+    max-width: 100%;
+    text-align: center;
+}
+
+.search-container {
+    padding: 20px;
+    display: inline-flex;
+}
+
+.search-btn {
+    background: url('search-icon.png') no-repeat center;
+    background-size: cover;
+    width: 12px;
+    height: 12px;
+    border: none;
+    cursor: pointer;
+    margin-left: -25px;
+    margin-top: 13px;
+}
+
+.search-input {
+    background-color: #00000076;
+    border: none;
+    height: 30px;
+    padding: 5px;
+    padding-left: 10px;
+    width: 220px;
+    max-width: 100%;
+    border-radius: 10%/40%;
+    outline: none;
+}
+
+#add-btn {
+    margin-left: 55px;
+    background: none;
+    border: none;
+    font-size: x-small;
+    cursor: pointer;
+    margin-top: 13px;
+}
+
+#add-btn:hover {
+    text-decoration: underline;
+}
+
+.weather {
+    margin-top: 5px;
+}
+
+#main-name {
+    font-size: 45px;
+    border: none;
+    background: none;
+    width: 400px;
+    text-transform: capitalize;
+    text-align: center;
+    outline: none;
+    caret-color: transparent;
+}
+
+#main-name:hover {
+    cursor: pointer;
+}
+
+#main-temp {
+    font-size: 70px;
+    margin-top: 10px;
+}
+
+.icon-description-container {
+    display: inline-flex;
+    margin: auto;
+}
+
+#main-icon {
+    margin-left: -5px;
+}
+
+.city-description {
+    text-transform: capitalize;
+}
+
+.city-name {
+    text-transform: capitalize;
+}
+
+.city-name:hover {
+    text-decoration: underline;
+}
+
+#main-description {
+    margin-top: 15px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+.feels-humidity-container {
+    display: grid;
+    width: 150px;
+    font-size: 15px;
+    margin: auto;
+    margin-top: 5px;
+}
+
+.humidity {
+    margin-top: 10px;
+}
+
+.watchlist-container {
+    background-color: #00000076;
+    height: 400px;
+    width: 250px;
+    border-radius: 15%/10%;
+    max-width: 100%;
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+.watchlist-container::-webkit-scrollbar-track {
+    border: 1px solid #000;
+    padding: 2px 0;
+    background-color: #404040;
+}
+
+.watchlist-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.watchlist-container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #737272;
+    border: 1px solid #000;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    border-bottom: 3px solid #00000076;
+}
+
+.wl-box {
+    background-color: #00000076;
+    width: 200px;
+    height: 75px;
+    margin: auto;
+    margin-top: 10px;
+    text-align: left;
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-top: 2px;
+    border-radius:7%/15%;
+}
+
+.city-name-delete-container {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 200px;
+    text-align: center;
+}
+
+#delete-btn {
+    background: none;
+    border: none;
+    font-size: x-small;
+}
+
+#wl-name {
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+#wl-temp {
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+#wl-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: -7px;
+}
+
+#wl-description {
+    font-size: 15px;
+    margin-top: 6px;
+    margin-left: 7px;
+}
+
+#wl-icon-descr {
+    width: 200px;
+}
+
+
