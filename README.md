@@ -25,6 +25,8 @@ $ py manage.py migrate
 $ py manage.py createsuperuser
 ```
 
+Make sure to set up [OpenWeatherMap API](https://openweathermap.org/api) and replace the API key already there with your own. (My API key might not work after some time)
+
 Now you can run the development server:
 ```bash
 $ py manage.py runserver
